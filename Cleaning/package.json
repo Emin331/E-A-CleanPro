@@ -1,0 +1,17 @@
+{
+  "name": "cleanpro",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CleanPro website — frontend (my-app) + backend, run together from one place",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix my-app",
+    "predev": "node scripts/free-ports.js",
+    "dev": "concurrently -n BACKEND,FRONTEND -c green,cyan \"npm run dev --prefix backend\" \"npm run dev --prefix my-app\"",
+    "build": "npm run build --prefix my-app",
+    "prestart": "node scripts/free-ports.js",
+    "start": "npm run build && npm start --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
